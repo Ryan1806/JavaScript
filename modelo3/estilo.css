@@ -22,7 +22,7 @@ section {
 
 div {
     text-align: center;
-    padding: 20px;
+    padding: 8px;
 }
 
 
@@ -31,10 +31,4 @@ footer {
     text-align: center;
     font-style: italic;
     color: white;
-}
-
-img {
-    display: block;
-    margin: auto;
-    margin-top: 30px;
 }
