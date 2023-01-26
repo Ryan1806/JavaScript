@@ -1,20 +1,60 @@
+let num = document.querySelector('input#fnum')
+let lista = document.querySelector('select#flista')
+let res = document.querySelector('div#res')
+let valores = []
 
-function carregar() {
-    var msg = document.getElementById('msg')
-    var img = document.getElementById('imagem')
-    var data = new Date()
-    var hora = data.getHours()
-    msg.innerHTML = `Agora são ${hora} horas.`
-    if(hora >= 0 &&  hora < 12) {
-        img.src = 'img-manha3.png'
-        document.body.style.background = '#2ADB9'
-    }else if(hora >= 12 && hora < 18) {
-        img.src = 'img-tarde3.png'
-        document.body.style.background = 'chocolate'
-
+function isNumero(n) {
+ if(Number(n) >= 1 && Number(n) <= 100) {
+    return true
+ }else {
+    return false
+ }
+}
+function inLista(n, l) {
+    if(l.indexOf(Number(n)) != -1) {
+        return true
     }else {
-        img.src = 'img-noite3.png'
-        document.body.style.background = 'black'
+        return false
     }
-} 
+}
+
+function adicionar() {
+    if(isNumero(num.value) && !inLista(num.value, valores)) {
+        valores.push(Number(num.value))
+        let item = document.createElement('option')
+        item.text = `Valor ${num.value} foi adicionado.`
+        lista.appendChild(item)
+        res.innerHTML = ''
+    }else {
+        window.alert('Valor inválido ou já encontrado na lista.')
+    }
+    num.value = ''
+    num.focus()
+}
+
+function finalizar() {
+    if(valores.length == 0) {
+        window.alert('Adicione valores antes de finalizar!')
+    }else {
+        let tot = valores.length
+        let maior = valores[0]
+        let menor = valores[0]
+        let soma = 0
+        let media = 0
+        for(let pos in valores) {
+            soma += valores[pos]
+            if(valores[pos] > maior )
+            maior = [pos]
+            if(valores[pos] < menor)
+            menor = [pos]
+        }
+        media = soma / tot
+        res.innerHTML = ''
+        res.innerHTML += `<p>Ao todo, temos ${tot} números cadastrados. </p>`
+        res.innerHTML += `<p>O maior valor informado foi o ${maior}.</p>`
+        res.innerHTML += `<p>O menor valor informado foi o ${menor}.</p>`
+        res.innerHTML += `<p>Somando todos os valores, temos ${soma}.</p>`
+        res.innerHTML += `<p>A media desses valores é ${media}.</p>`
+    }
+}
 

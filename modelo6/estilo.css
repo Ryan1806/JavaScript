@@ -20,8 +20,11 @@ section {
     box-shadow: 5px 5px  10px rgba(0, 0, 0, 0.452) ;
 }
 
+select#flista {
+    width: 170px;
+}
+
 div {
-    text-align: center;
     padding: 8px;
 }
 
